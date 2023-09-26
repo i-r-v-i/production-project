@@ -1,15 +1,34 @@
 {
     "compilerOptions": {
+        // место, где сборка происходит, если соббирать без веб-пака
       "outDir": "./dist/",
+      // подсвечивает все места, где не указан тип
       "noImplicitAny": true,
-      "module": "es6",
+      //
+      "module": "ESNext",
+      // версия стандарта екмоскрипт - в какую спецификацию компилиоуем - для поддержки большинства браузеров
       "target": "es5",
+      // позволяет возвращает tsx конструкции
       "jsx": "react",
+      // позволяет обрабатываьб не только ts fikes, но и js
       "allowJs": true,
       "moduleResolution": "node",
       // esModuleInterop позволяет работать с пакетами, которые используют
-      // 
+      // common js как с обычными пакетами с помощью import require( module.export) = common.js
+      // inport Moment from 'moment'
+      // без флага esModuleInterop результат - undefined
+      //console.log (Moment )
+      // с флагом результат [object Object]
       "esModuleInterop": true,
+      // Если какая-либо библиотека не имеет default import,
+      // лоадеры вроде ts-loader или babel-loader автоматически создают их 
+      // вместо такого импорта import * as React from 'react' 
+      // можно писать так: import React from 'react' 
       "allowSyntheticDefaultImports": true
-    }
+    },
+    "ts-node": {
+        "compilerOptions": {
+          "module": "CommonJS"
+        }
+      }
   }
