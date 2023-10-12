@@ -5,13 +5,15 @@
     "html-webpack-plugin": "^5.5.0",
     "npm": "^8.5.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
   },
   "name": "production-project",
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {
     "@types/node": "^17.0.21",
+    "@types/react-router-dom": "^5.3.3",
     "@types/webpack": "^5.28.0",
     "@types/webpack-dev-server": "^4.7.2",
     "css-loader": "^6.6.0",
