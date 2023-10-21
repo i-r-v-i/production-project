@@ -1,7 +1,4 @@
 type Mods = Record<string, boolean | string>
-// const obj: Mods = {
-//     'hovered' : false
-// }
 
 export function classNames (cls: string, mods: Mods = {}, additional: string[] = []): string {
 return [cls, 
