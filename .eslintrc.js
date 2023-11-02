@@ -39,7 +39,8 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'linebreak-style': 0,
         'no-nested-ternary': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['to', 'fill'] }],
+        'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: [''] }],
+        'max-len': 'off',
 
     },
     globals: {
