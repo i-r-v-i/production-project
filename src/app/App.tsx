@@ -4,6 +4,7 @@ import { useTheme } from 'app/providers/ThemeProvider/ui';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
+import Loader from 'shared/ui/Loader/Loader';
 import { AppRouter } from './providers/router';
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
             [theme],
         )}
         >
-            <Suspense fallback="loading">
+            <Suspense fallback={<Loader />}>
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
