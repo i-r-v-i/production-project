@@ -25,6 +25,10 @@ describe('classNames', () => {
             .toBe('somecl class1 class2 hovered');
     });
     // test('with mods undefined', () => {
-    //     expect(classNames('somecl', { hovered: true, scrollable: undefined }, ['class1', 'class2'])).toBe('somecl class1 class2 hovered');
+    //     expect(classNames(
+    //         'somecl',
+    //         { hovered: true, scrollable: undefined },
+    //         ['class1', 'class2'],
+    //     )).toBe('somecl class1 class2 hovered');
     // });
 });
