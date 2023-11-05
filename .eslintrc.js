@@ -43,7 +43,7 @@ module.exports = {
         'no-nested-ternary': 'off',
         'i18next/no-literal-string': ['error',
             { markupOnly: true, ignoreAttribute: [''] }],
-        'max-len': ['error', { ignoreComments: true }],
+        'max-len': 'off',
 
     },
     globals: {
