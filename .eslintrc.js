@@ -43,7 +43,7 @@ module.exports = {
         'linebreak-style': 0,
         'no-nested-ternary': 'off',
         'i18next/no-literal-string': ['error',
-            { markupOnly: true, ignoreAttribute: [''] }],
+            { markupOnly: true, ignoreAttribute: ['to', 'data-testid'] }],
         'max-len': 'off',
 
     },
