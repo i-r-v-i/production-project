@@ -13,5 +13,3 @@ export const NotFoundPage = ({ className = '' }: NotFoundPageProps) => {
         </div>
     );
 };
-
-export default NotFoundPage;
