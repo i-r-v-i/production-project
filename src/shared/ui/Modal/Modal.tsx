@@ -1,30 +1,30 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
-    Children, ReactNode, useCallback, useEffect, useRef, useState,
+    ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
+import { useTheme } from 'app/providers/ThemeProvider/ui';
 import cls from './Modal.module.scss';
+import { Portal } from '../Portal/Portal';
 
- interface ModalProps {
- className?: string;
- children?: ReactNode;
- isOpen: boolean;
- onClose: () => void;
- }
+interface ModalProps {
+  className?: string;
+  children?: ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
     const {
-        className = '',
-        children,
-        isOpen,
-        onClose,
+        className = '', children, isOpen, onClose,
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef<any>();
+    const { theme } = useTheme();
 
-    const closeHandler = () => {
+    const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
             timerRef.current = setTimeout(() => {
@@ -32,15 +32,20 @@ export const Modal = (props: ModalProps) => {
                 setIsClosing(false);
             }, ANIMATION_DELAY);
         }
-    };
+    }, [onClose]);
     // новые ссылки на каждый рендер. Чтобы сохранить старую сссылку - добавить useCallback
-    const onKeyDown = useCallback((event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-            closeHandler();
-        }
-    }, [closeHandler]);
 
-    const onContentClick = (e: MouseEvent) => {
+    const onKeyDown = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                console.log('fghfgfgh');
+                closeHandler();
+            }
+        },
+        [closeHandler],
+    );
+
+    const onContentClick = (e: any) => {
         e.stopPropagation();
     };
 
@@ -55,18 +60,31 @@ export const Modal = (props: ModalProps) => {
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
+        [cls[theme]]: true,
     };
 
     return (
-        <div className={classNames(cls.modal, mods, [className])}>
-            <div className={cls.overlay} onClick={closeHandler}>
-                <div
-                    className={cls.content}
-                    onClick={onContentClick}
-                >
-                    {children}
+        <Portal>
+            <div className={classNames(cls.modal, mods, [className])}>
+                <div className={cls.overlay} onClick={closeHandler}>
+                    <div className={cls.content} onClick={onContentClick}>
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
+        </Portal>
     );
 };
+
+// interface IFrontender {
+//     name: string;
+//     skills: {
+//         front: string[],
+//         back: string[]
+//     }
+
+// }
+
+// const Irvi: IFrontender = {
+//     name: 'Irina Vinitskaia',
+// }

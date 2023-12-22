@@ -17,13 +17,18 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: 'Text',
 };
-// Primary.decorators = [ThemeDecorator(Theme.LIGHT)];
+
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
 };
-// Clear.decorators = [ThemeDecorator(Theme.LIGHT)];
+
+export const ClearInverted = Template.bind({});
+ClearInverted.args = {
+    children: 'Text',
+    theme: ButtonTheme.CLEAR_INVERTED,
+};
 
 export const Outline = Template.bind({});
 Outline.args = {
@@ -77,14 +82,6 @@ SquareSizeL.args = {
     square: true,
     size: ButtonSize.L,
 };
-
-// export const SquareSizeM = Template.bind({});
-// SquareSizeM.args = {
-//     children: '>',
-//     theme: ButtonTheme.BACKGROUND,
-//     square: true,
-//     size: ButtonSize.M,
-// };
 
 export const SquareSizeXL = Template.bind({});
 SquareSizeXL.args = {
