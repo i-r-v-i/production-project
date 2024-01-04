@@ -4,7 +4,6 @@ import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useState } from 'react';
 import PageLoader from 'shared/ui/PageLoader/PageLoader';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { AppRouter } from './providers/router';
 
 const App = () => {
@@ -14,7 +13,7 @@ const App = () => {
         <div className={classNames(
             'app',
             { hovered: true, selected: true },
-            [theme],
+            [],
         )}
         >
             <Suspense fallback={<PageLoader />}>
