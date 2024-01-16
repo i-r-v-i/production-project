@@ -8,5 +8,7 @@
     "Добавить ошибку": "throw error",
     "Короткий язык": "En",
     "Увеличить": "increment",
-    "Уменьшить": "decrement"
+    "Уменьшить": "decrement",
+    "Введите username": "Type username",
+    "Введите пароль": "Type password"
 }
