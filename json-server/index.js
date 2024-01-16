@@ -34,6 +34,7 @@ server.post('/login', (req, res) => {
 
         return res.status(403).json({ message: 'User not found' });
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e);
         return res.status(500).json({ message: e.message });
     }
@@ -53,5 +54,6 @@ server.use(router);
 
 // запуск сервера
 server.listen(8000, () => {
+    // eslint-disable-next-line no-console
     console.log('server is running on 8000 port');
 });
