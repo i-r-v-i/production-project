@@ -10,5 +10,7 @@
     "Увеличить": "increment",
     "Уменьшить": "decrement",
     "Введите username": "Type username",
-    "Введите пароль": "Type password"
+    "Введите пароль": "Type password",
+    "Форма авторизации": "Auth Form",
+    "Введен неверный логин или пароль": "Uncorrect login or password"
 }
