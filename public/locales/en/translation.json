@@ -2,6 +2,8 @@
     "Тестовый пример": "Test example",
     "Перевод": "Translate",
     "Главная страница":  "Main page",
+    "Главная": "Main",
+    "О сайте": "About",
     "Язык": "English",
     "Страница не найдена" : "Page not found",
     "Произошла непредвиденная ошибка": "Some error comes",
@@ -12,5 +14,7 @@
     "Введите username": "Type username",
     "Введите пароль": "Type password",
     "Форма авторизации": "Auth Form",
-    "Введен неверный логин или пароль": "Uncorrect login or password"
+    "Введен неверный логин или пароль": "Uncorrect login or password",
+    "Войти": "Login",
+    "Выйти": "Logout"
 }
