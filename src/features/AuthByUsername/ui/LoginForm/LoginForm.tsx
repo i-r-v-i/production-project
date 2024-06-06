@@ -5,7 +5,7 @@ import Input from 'shared/ui/Input/Input';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { memo, useCallback, useEffect } from 'react';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider/config/StateSchema';
+import DynamicModuleLoader, { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -17,25 +17,19 @@ import cls from './LoginForm.module.scss';
 export interface LoginFormProps {
   className?: string;
 }
+
+const initialReducers: ReducersList = {
+    loginForm: loginReduser,
+};
+
 const LoginForm = memo(({ className = '' }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const store = useStore() as ReduxStoreWithManager;
 
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
-
-    useEffect(() => {
-        store.reducerManager.add('loginForm', loginReduser);
-        dispatch({ type: '@INIT loginform' });
-        return () => {
-            store.reducerManager.remove('loginForm');
-            dispatch({ type: '@Destroy loginform' });
-        };
-    // eslint-disable-next-line
-  }, []);
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -56,35 +50,38 @@ const LoginForm = memo(({ className = '' }: LoginFormProps) => {
     }, [dispatch, username, password]);
 
     return (
-        <div className={classNames(cls.loginForm, {}, [className])}>
-            <Text title={t('Форма авторизации')} />
-            {error && (
-                <Text text={t('Введен неверный логин или пароль')} theme={TextTheme.ERROR} />
-            )}
-            <Input
-                className={cls.input}
-                type="text"
-                placeholder={t('Введите username')}
-                autofocus
-                onChange={onChangeUsername}
-                value={username}
-            />
-            <Input
-                className={cls.input}
-                type="text"
-                placeholder={t('Введите пароль')}
-                onChange={onChangePassword}
-                value={password}
-            />
-            <Button
-                className={cls.loginBtn}
-                theme={ButtonTheme.OUTLINE}
-                onClick={onLoginClick}
-                disabled={isLoading}
-            >
-                {t('Войти')}
-            </Button>
-        </div>
+        // eslint-disable-next-line
+        <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
+            <div className={classNames(cls.loginForm, {}, [className])}>
+                <Text title={t('Форма авторизации')} />
+                {error && (
+                    <Text text={t('Введен неверный логин или пароль')} theme={TextTheme.ERROR} />
+                )}
+                <Input
+                    className={cls.input}
+                    type="text"
+                    placeholder={t('Введите username')}
+                    autofocus
+                    onChange={onChangeUsername}
+                    value={username}
+                />
+                <Input
+                    className={cls.input}
+                    type="text"
+                    placeholder={t('Введите пароль')}
+                    onChange={onChangePassword}
+                    value={password}
+                />
+                <Button
+                    className={cls.loginBtn}
+                    theme={ButtonTheme.OUTLINE}
+                    onClick={onLoginClick}
+                    disabled={isLoading}
+                >
+                    {t('Войти')}
+                </Button>
+            </div>
+        </DynamicModuleLoader>
     );
 });
 
