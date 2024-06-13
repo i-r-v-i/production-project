@@ -18,7 +18,7 @@ export interface LoginFormProps {
   className?: string;
 }
 
-const initialReducers: ReducersList = {
+const initialReducers: any = {
     loginForm: loginReduser,
 };
 
@@ -45,8 +45,9 @@ const LoginForm = memo(({ className = '' }: LoginFormProps) => {
         [dispatch],
     );
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({ username, password }));
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUsername({ username, password }));
+        console.log(result);
     }, [dispatch, username, password]);
 
     return (
