@@ -89,16 +89,3 @@ export const Modal = (props: ModalProps) => {
         </Portal>
     );
 };
-
-// interface IFrontender {
-//     name: string;
-//     skills: {
-//         frontend: string[],
-//         backend: string[]
-//     }
-
-// }
-
-// const me: IFrontender = {
-//     name: 'Irina Vinitskaia',
-// }

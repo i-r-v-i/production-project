@@ -1,31 +1,32 @@
 {
-    "posts": [
-      {
-        "id": "1",
-        "title": "json-server",
-        "userId": 1
-      },
-      {
-        "id": "2",
-        "title": "json-server",
-        "userId": 2
-      }
-    ],
-    "comments": [
-      {
-        "id": "1",
-        "body": "some comment",
-        "postId": 1
-      }
-    ],
-    "users": [
-      {
-        "id": "1",
-        "username": "admin",
-        "password": "124"
-      }
-    ],
-    "profile": { "first": "Irina",
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "124"
+    }
+  ],
+  "profile": {
+    "first": "Irina",
     "lastname": "Vinit",
     "age": 26,
     "currency": "RUB",
@@ -33,5 +34,5 @@
     "city": "Moscow",
     "username": "admin",
     "avatar": "https://www.funnyart.club/uploads/posts/2022-12/1671405353_www-funnyart-club-p-malishka-kartinki-krasivo-15.jpg"
-   }
   }
+}
