@@ -25,5 +25,13 @@
         "password": "124"
       }
     ],
-    "profile": { "name": "typicode" }
+    "profile": { "first": "Irina",
+    "lastname": "Vinit",
+    "age": 26,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://www.funnyart.club/uploads/posts/2022-12/1671405353_www-funnyart-club-p-malishka-kartinki-krasivo-15.jpg"
+   }
   }
