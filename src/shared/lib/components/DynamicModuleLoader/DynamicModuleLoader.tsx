@@ -44,5 +44,3 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         </>
     );
 };
-
-export default DynamicModuleLoader;
