@@ -1,5 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import {
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
+import React, {
+    MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider/ui';
@@ -9,8 +10,8 @@ import { Portal } from '../Portal/Portal';
 interface ModalProps {
   className?: string;
   children?: ReactNode;
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
   lazy?: boolean;
 }
 
@@ -27,7 +28,7 @@ export const Modal = (props: ModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
-    const timerRef = useRef<any>();
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
     const { theme } = useTheme();
 
     useEffect(() => {
@@ -56,7 +57,7 @@ export const Modal = (props: ModalProps) => {
         [closeHandler],
     );
 
-    const onContentClick = (e: any) => {
+    const onContentClick = (e: React.MouseEvent) => {
         e.stopPropagation();
     };
 
@@ -64,11 +65,13 @@ export const Modal = (props: ModalProps) => {
         if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
         }
-        clearTimeout(timerRef.current);
-        window.removeEventListener('keydown', onKeyDown);
+        return () => {
+            clearTimeout(timerRef.current);
+            window.removeEventListener('keydown', onKeyDown);
+        };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };
